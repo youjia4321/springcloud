@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.youjia.springcloud.api.CommonResult;
 import com.youjia.springcloud.pojo.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
@@ -26,14 +27,17 @@ public class ConsumerController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Value("${rest.deptUrlPrefix}")
+    private String REST_URL_PREFIX;
+
     @GetMapping("/dept/list")
     public CommonResult<List<Dept>> queryAll() {
-        return restTemplate.getForObject("http://localhost:8001/dept/list", CommonResult.class);
+        return restTemplate.getForObject(REST_URL_PREFIX + "/dept/list", CommonResult.class);
     }
 
     @GetMapping("/dept/get/{id}")
     public CommonResult<List<Dept>> get(@PathVariable long id) {
-        return restTemplate.getForObject("http://localhost:8001/dept/get/"+id, CommonResult.class);
+        return restTemplate.getForObject(REST_URL_PREFIX + "/dept/get/"+id, CommonResult.class);
     }
 
     @PostMapping("/dept/add")
@@ -41,7 +45,7 @@ public class ConsumerController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json;charset=UTF-8");
         HttpEntity<String> entity = new HttpEntity<>(JSON.toJSONString(dept), headers);
-        return restTemplate.postForObject("http://localhost:8001/dept/add", entity, CommonResult.class);
+        return restTemplate.postForObject(REST_URL_PREFIX + "/dept/add", entity, CommonResult.class);
     }
 
 }

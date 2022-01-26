@@ -2,11 +2,11 @@ package com.youjia.springcloud.controller;
 
 import com.youjia.springcloud.api.CommonResult;
 import com.youjia.springcloud.pojo.Dept;
-import com.youjia.springcloud.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+import com.youjia.springcloud.service.DeptService;
 
 import java.util.List;
 
