@@ -1,5 +1,6 @@
 package com.youjia.springcloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.youjia.springcloud.api.CommonResult;
 import com.youjia.springcloud.pojo.Dept;
 import com.youjia.springcloud.service.DeptService;
@@ -28,16 +29,19 @@ public class DeptController {
     @Autowired
     private DiscoveryClient client;
 
+    @HystrixCommand
     @GetMapping("/list")
     public CommonResult<List<Dept>> list() {
         return CommonResult.success(deptService.queryAll());
     }
 
+    @HystrixCommand
     @GetMapping("/get/{id}")
     public CommonResult<Dept> get(@PathVariable long id) {
         return CommonResult.success(deptService.queryById(id));
     }
 
+    @HystrixCommand
     @PostMapping("/add")
     public CommonResult<Boolean> add(@RequestBody Dept dept) {
         return CommonResult.success(deptService.addDept(dept));

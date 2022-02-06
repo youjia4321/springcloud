@@ -16,6 +16,7 @@
         <module>springcloud-eureka-7002</module>
         <module>springcloud-eureka-7003</module>
         <module>springcloud-consumer-dept-feign</module>
+        <module>springcloud-consumer-hystrix-dashboard</module>
     </modules>
 
     <properties>

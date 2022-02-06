@@ -35,3 +35,10 @@ eureka:
 info:
   app.name: youjia-springcloud-8001
   company.name: org.youjia.com
+
+# 使用Hystrix Metrics Stream必备
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
