@@ -1,0 +1,24 @@
+server:
+  port: 8000
+#  servlet:
+#    context-path: /
+rest:
+#  deptUrlPrefix: "http://localhost:8001"
+  # 负载均衡
+  deptUrlPrefix: "http://SPRINGCLOUD-PROVIDER-DEPT"
+logging:
+  level:
+    com.youjia.springcloud: info
+
+# Eureka配置
+eureka:
+  client:
+    register-with-eureka: false # 不向Eureka注册自己
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka, http://eureka7003.com:7003/eureka
+  instance:
+    hostname: springcloud-consumer-dept-feign-8000
+
+feign:
+  hystrix:
+    enabled: true # 开启服务降级

@@ -36,12 +36,12 @@ public class ConsumerController {
     }
 
     @GetMapping("/dept/get/{id}")
-    public CommonResult<List<Dept>> get(@PathVariable long id) {
+    public CommonResult<Dept> get(@PathVariable long id) {
         return restTemplate.getForObject(REST_URL_PREFIX + "/dept/get/"+id, CommonResult.class);
     }
 
     @PostMapping("/dept/add")
-    public CommonResult<List<Dept>> get(@RequestBody Dept dept) {
+    public CommonResult<Boolean> get(@RequestBody Dept dept) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json;charset=UTF-8");
         HttpEntity<String> entity = new HttpEntity<>(JSON.toJSONString(dept), headers);

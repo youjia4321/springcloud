@@ -18,7 +18,7 @@ import java.util.List;
  * @Version: 1.0
  */
 
-@RestController()
+@RestController
 @RequestMapping("/dept")
 public class DeptController {
 
