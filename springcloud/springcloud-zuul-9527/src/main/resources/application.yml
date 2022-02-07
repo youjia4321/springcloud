@@ -1,0 +1,31 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: springcloud-zuul
+
+# Eureka配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka, http://eureka7003.com:7003/eureka
+  instance:
+    # 修改eureka上面的默认信息
+    instance-id: zuul9527.com
+    prefer-ip-address: true
+
+# info配置
+info:
+  app.name: youjia-springcloud-9527
+  company.name: org.youjia.com
+
+zuul:
+  routes:
+    mydept.serviceId: springcloud-provider-dept # 设置微服务的serviceId
+    mydept.path: /mydept/** # 将通过指定服务名调用的修改为自定义配置
+    udept.serviceId: springcloud-provider-dept1 # 可配置多个
+    udept.path: /udept/**
+#  ignored-services: springcloud-provider-dept, springcloud-provider-dept1  # 不能使用该服务名访问
+    ignored-services: "*" # 隐藏全部
+  prefix: /youjia # 设置公共的前缀
