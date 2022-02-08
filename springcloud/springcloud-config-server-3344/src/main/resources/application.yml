@@ -1,0 +1,24 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: springcloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/youjia4321/springcloud-config.git # GitHub上面的git仓库名字
+          search-paths:
+            - config # 指定查询的文件夹
+      label: master
+
+#服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka, http://eureka7003.com:7003/eureka
+  instance:
+    # 修改eureka上面的默认信息
+    instance-id: springcloud-config-server3344
+    prefer-ip-address: true

@@ -1,0 +1,11 @@
+# 系统级别 （application.yml 用户级别）
+
+spring:
+  application:
+    name: provider-dept-client
+  cloud:
+    config:
+      label: master
+      name: config-dept
+      profile: test # 根据激活环境启动服务
+      uri: http://localhost:3344
