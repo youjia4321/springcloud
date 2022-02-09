@@ -1,5 +1,6 @@
 package com.youjia.springcloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.youjia.springcloud.api.CommonResult;
 import com.youjia.springcloud.pojo.Dept;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/dept")
+//@DefaultProperties(defaultFallback = "fallback_global_method") // 设置默认的服务降级方法
 public class DeptController {
 
     @Autowired
@@ -64,6 +66,10 @@ public class DeptController {
             );
         }
         return CommonResult.success(this.client);
+    }
+
+    public String fallback_global_method(){
+        return null;
     }
 
 }
