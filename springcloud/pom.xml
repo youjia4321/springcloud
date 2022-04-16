@@ -21,6 +21,7 @@
         <module>springcloud-config-server-3344</module>
         <module>springcloud-provider-dept-800x</module>
         <module>spingcloud-websocket</module>
+        <module>springboot-multisource</module>
     </modules>
 
     <properties>
@@ -37,6 +38,8 @@
         <springboot.version>2.2.2.RELEASE</springboot.version>
         <logback-core.version>1.2.3</logback-core.version>
         <fastjson.version>1.2.69</fastjson.version>
+        <mybatis-plus.version>3.3.0</mybatis-plus.version>
+        <mybatis.version>3.5.1</mybatis.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -115,6 +118,28 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>2.0.2</version>
+            </dependency>
+            <!--mybatis plus extension,包含了mybatis plus core-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!--mybatis-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
         </dependencies>
 
