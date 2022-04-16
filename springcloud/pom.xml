@@ -20,8 +20,8 @@
         <module>springcloud-zuul-9527</module>
         <module>springcloud-config-server-3344</module>
         <module>springcloud-provider-dept-800x</module>
-        <module>spingcloud-websocket</module>
-        <module>springboot-multisource</module>
+        <module>springcloud-websocket</module>
+        <module>springcloud-multisource</module>
     </modules>
 
     <properties>
