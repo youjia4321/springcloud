@@ -22,6 +22,7 @@
         <module>springcloud-provider-dept-800x</module>
         <module>springcloud-websocket</module>
         <module>springcloud-multisource</module>
+        <module>web-1.0</module>
     </modules>
 
     <properties>

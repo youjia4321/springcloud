@@ -25,7 +25,7 @@ public class DeptClientFallbackFactory implements FallbackFactory<DeptClientServ
         return new DeptClientService() {
             @Override
             public CommonResult<Boolean> addDept(Dept dept) {
-                return null;
+                return CommonResult.success(ResultCode.SERVICE_DOWN, "客户端提供了服务降级信息，该服务已关闭");
             }
 
             @Override
@@ -35,7 +35,7 @@ public class DeptClientFallbackFactory implements FallbackFactory<DeptClientServ
 
             @Override
             public CommonResult<List<Dept>> queryAll() {
-                return null;
+                return CommonResult.success(ResultCode.SERVICE_DOWN, "客户端提供了服务降级信息，该服务已关闭");
             }
         };
     }
