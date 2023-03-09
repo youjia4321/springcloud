@@ -1,0 +1,53 @@
+server:
+  port: 8011
+  servlet:
+    context-path: /sub-table
+logging:
+  level:
+    com.youjia.springcloud: info
+    org.springframework: info
+
+
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/subtable?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#    username: root
+#    password: 123456
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.youjia.springcloud.domain
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+
+# 分库分表
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  shardingsphere:
+    datasource:
+      names: subtable
+      subtable:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/subtable?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+        username: root
+        password: 123456
+    sharding:
+      tables:
+        # 表名
+        sys_oper_log:
+          actual-data-nodes: subtable.sys_oper_log_$->{0..1}
+          # 分表配置，根据id分表
+          table-strategy:
+            inline:
+              sharding-column: oper_id
+              algorithm-expression: sys_oper_log_$->{oper_id % 2}
+          # 配置字段的生成策略，column为字段名，type为生成策略，sharding默认提供SNOWFLAKE和UUID两种，可以自己实现其他策略
+          key-generator:
+            column: oper_id
+            type: SNOWFLAKE
+    props:
+      sql:
+        show: true
