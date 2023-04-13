@@ -1,7 +1,10 @@
 package com.youjia.web.controller;
 
+import com.youjia.springcloud.service.IdGenerateService;
+import com.youjia.springcloud.service.SmsService;
 import com.youjia.web.domain.CallReq;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -20,6 +23,11 @@ import java.util.Map;
 @Slf4j
 public class WebTestController {
 
+    @Autowired
+    SmsService smsService;
+    @Autowired
+    IdGenerateService idGenerateService;
+
     @GetMapping("/print")
     public String printStr() {
         return "你成功部署了springboot项目";
@@ -35,5 +43,17 @@ public class WebTestController {
         map.put("resultData", "");
         return map;
     }
+
+    @GetMapping("/sms/send")
+    public String send(){
+        smsService.send("18166183938","签名","336600","你好,短信启动器创建成功");
+        return "test success";
+    }
+
+    @GetMapping("/generate")
+    public Long generate(){
+        return idGenerateService.generate();
+    }
+
 
 }

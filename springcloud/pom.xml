@@ -24,6 +24,7 @@
         <module>springcloud-multisource</module>
         <module>web-1.0</module>
         <module>springcloud-sub-table</module>
+        <module>spring-boot-starter-sms</module>
     </modules>
 
     <properties>

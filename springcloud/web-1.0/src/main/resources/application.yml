@@ -6,3 +6,12 @@ logging:
   level:
     com.youjia.springcloud: info
     org.springframework: info
+
+
+
+spboot:
+  sms:
+    access-key-id: xx
+    access-key-secret: 123456
+sue:
+  work-id: 19

@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.youjia.springcloud.config.SmsAutoConfig, \
+  com.youjia.springcloud.config.IdAutoConfig
+
